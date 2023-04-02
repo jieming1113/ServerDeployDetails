@@ -1,0 +1,39 @@
+https://blog.csdn.net/qq_42921511/article/details/120584569?spm=1001.2014.3001.5501
+
+
+method1:
+if have admin
+
+just run:
+sudo apt install cmake
+
+valuation: cmake --version
+
+
+
+
+method2: 
+no admin permission
+
+download cmake source
+
+line356 insert:  set(CMAKE_USE_OPENSSL OFF)    in CmakeLists.txt
+
+$ tar -zvxf cmake-3.21.3.tar.gz
+$ cd cmake-3.21.3
+$ ./bootstrap
+$ ./configure --prefix=/home/jupyter-jieming/data/jieming/cmake            !!!注意，要在自己用户名下的目录配置，如果不加--prefix会默认在root目录下配置，这样后面make install时没有sudo权限会失败
+$ make
+$ make install
+
+
+add environment variable:
+$ vim ~/.bashrc
+export PATH=/home/jupyter-jieming/data/jieming/cmake/bin:$PATH
+
+
+activa:
+$ source ~/.bashrc
+
+valuation:
+cmake --version
